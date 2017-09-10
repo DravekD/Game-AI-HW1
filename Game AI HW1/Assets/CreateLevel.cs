@@ -19,7 +19,7 @@ public class CreateLevel : MonoBehaviour {
 	void Start () {
 
         //Set screen resolution.
-        Screen.SetResolution(1024, 768, false);
+        Screen.SetResolution(1920,1080, false);
 
         //Verify the path is valid.
         if (!(File.Exists(path)))
@@ -59,21 +59,24 @@ public class CreateLevel : MonoBehaviour {
         {
             for (int y=-16; y<15; y++)
             {
+                //Debug.Log(jagged[x+14][y+16]);
                 if (jagged[x+14][y+16] == 88)
                 {
-                    Instantiate(wall, new Vector3((x * 0.24f), (y * -0.24f), 0), Quaternion.identity);
+                    Instantiate(wall, new Vector3((x * 0.3f), (y * -0.3f), 0), Quaternion.identity);
                 }
                 else if (jagged[x+14][y+16] == 79)
                 {
-                    Instantiate(pellet, new Vector3((x * 0.24f), (y * -0.24f), 0), Quaternion.identity);
+                    Instantiate(pellet, new Vector3((x * 0.3f), (y * -0.3f), 0), Quaternion.identity);
+                    Instantiate(floor, new Vector3((x * 0.3f), (y * -0.3f), 0), Quaternion.identity);
                 }
                 else if (jagged[x+14][y+16] == 32)
                 {
-                    Instantiate(floor, new Vector3((x * 0.24f), (y * -0.24f), 0), Quaternion.identity);
+                    Instantiate(floor, new Vector3((x * 0.3f), (y * -0.3f), 0), Quaternion.identity);
                 }
                 else if (jagged[x+14][y+16] == 80)
                 {
-                    //Instantiate(player, new Vector3((j * 0.12f), (i * 0.12f), 0), Quaternion.identity);
+                    Instantiate(floor, new Vector3((x * 0.3f), (y * -0.3f), 0), Quaternion.identity);
+                    Instantiate(player, new Vector3((x * 0.3f), (y * -0.3f), 0), Quaternion.identity);
                 }
                 else
                 {
