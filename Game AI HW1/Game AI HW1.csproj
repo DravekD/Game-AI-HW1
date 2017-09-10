@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CreateLevel.cs" />
+    <Compile Include="Assets\PelletTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\level.txt" />

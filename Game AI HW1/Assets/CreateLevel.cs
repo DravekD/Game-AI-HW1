@@ -1,12 +1,87 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.IO;
 
-public class NewBehaviourScript : MonoBehaviour {
+//-1.68 to 1.68 for x
+//-1.92 to 1.92 for y
+
+public class CreateLevel : MonoBehaviour {
+
+    string path = "Assets/level.txt";
+    public Transform player;
+    public Transform wall;
+    public Transform pellet;
+    public Transform floor;
 
 	// Use this for initialization
 	void Start () {
-		
+
+        //Set screen resolution.
+        Screen.SetResolution(1024, 768, false);
+
+        //Verify the path is valid.
+        if (!(File.Exists(path)))
+        {
+            Debug.LogError("Invalid Path");
+        }
+
+        //Read in the file and create a 2d array of data.
+		StreamReader reader = new StreamReader(path);
+        Int32[][] jagged = new Int32[28][];
+        for (int k=0; k<28; k++)
+        {
+            jagged[k] = new Int32[31];
+        }
+        Int32 ch;
+        int i = 0;
+        int j = 0;
+        while ((ch = reader.Read()) >= 0)
+        {
+            //Debug.Log(x);
+            if (ch != 13 && ch != 10)
+            {
+                //Debug.Log(x);
+                jagged[i][j] = ch;
+                i++;
+            }
+            else
+            {
+                j++;
+                i = 0;
+                reader.Read();
+            }
+        }
+        
+        //Create the level using the data array.
+        for (int x=-14; x<14; x++)
+        {
+            for (int y=-16; y<15; y++)
+            {
+                if (jagged[x+14][y+16] == 88)
+                {
+                    Instantiate(wall, new Vector3((x * 0.24f), (y * -0.24f), 0), Quaternion.identity);
+                }
+                else if (jagged[x+14][y+16] == 79)
+                {
+                    Instantiate(pellet, new Vector3((x * 0.24f), (y * -0.24f), 0), Quaternion.identity);
+                }
+                else if (jagged[x+14][y+16] == 32)
+                {
+                    Instantiate(floor, new Vector3((x * 0.24f), (y * -0.24f), 0), Quaternion.identity);
+                }
+                else if (jagged[x+14][y+16] == 80)
+                {
+                    //Instantiate(player, new Vector3((j * 0.12f), (i * 0.12f), 0), Quaternion.identity);
+                }
+                else
+                {
+                    Debug.LogWarning("Invalid character in level file.");
+                }
+            }
+        }
+
 	}
 	
 	// Update is called once per frame
