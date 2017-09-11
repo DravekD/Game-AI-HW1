@@ -28,7 +28,7 @@ public class CreateLevel : MonoBehaviour {
         globals.GetComponent<Globals>().resetScore();
 
         //Set screen resolution.
-        Screen.SetResolution(1920,1080, false);
+        Screen.SetResolution(1024,768, false);
 
         //Verify the path is valid.
         if (!(File.Exists(path)))

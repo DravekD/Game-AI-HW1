@@ -58,6 +58,7 @@ public class GhostTrigger : MonoBehaviour {
         if (other.gameObject.name == "Player(Clone)")
         {
             Destroy(other.gameObject);
+            global_reference.gameOver();
         }
         else if (other.gameObject.name != "Pellet(Clone)")
         {
