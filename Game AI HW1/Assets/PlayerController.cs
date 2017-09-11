@@ -12,33 +12,32 @@ public class PlayerController : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.freezeRotation = true;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     void FixedUpdate()
     {
         if (Input.GetKey("a"))
         {
             rb2d.velocity = new Vector2(-speed, 0);
-            rb2d.MoveRotation(180);
+            this.transform.rotation = Quaternion.AngleAxis(180f, Vector3.forward);
+            //transform.SetPositionAndRotation(transform.position, new Quaternion(0f, 0f, 180f, 0f));
         }
         else if (Input.GetKey("d"))
         {
             rb2d.velocity = new Vector2(speed, 0);
-            rb2d.MoveRotation(0);
+            this.transform.rotation = Quaternion.AngleAxis(0f, Vector3.forward);
+            //transform.SetPositionAndRotation(transform.position, new Quaternion(0f, 0f, 0f, 0f));
         }
         else if (Input.GetKey("s"))
         {
             rb2d.velocity = new Vector2(0, -speed);
-            rb2d.MoveRotation(90);
+            this.transform.rotation = Quaternion.AngleAxis(270f, Vector3.forward);
+            //transform.SetPositionAndRotation(transform.position, new Quaternion(0f, 0f, 90f, 0f));
         }
         else if (Input.GetKey("w"))
         {
             rb2d.velocity = new Vector2(0, speed);
-            rb2d.MoveRotation(270);
+            this.transform.rotation = Quaternion.AngleAxis(90f, Vector3.forward);
+            //transform.SetPositionAndRotation(transform.position, new Quaternion(0f, 0f, 270f, 0f));
         }
         else
         {

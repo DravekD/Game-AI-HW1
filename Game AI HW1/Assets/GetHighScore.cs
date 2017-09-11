@@ -8,6 +8,7 @@ using System.IO;
 public class GetHighScore : MonoBehaviour {
 
     private string path = "Assets/HighScore.txt";
+    public Globals global_reference;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,7 @@ public class GetHighScore : MonoBehaviour {
             StreamReader reader = new StreamReader(path);
             Text score = GetComponent<Text>();
             score.text = reader.ReadLine();
+            global_reference.setHighScore(Convert.ToInt16(score.text));
         }
     }
 	

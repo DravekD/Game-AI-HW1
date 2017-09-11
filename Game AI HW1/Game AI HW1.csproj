@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Assets\CreateLevel.cs" />
     <Compile Include="Assets\GetHighScore.cs" />
+    <Compile Include="Assets\GhostTrigger.cs" />
     <Compile Include="Assets\Globals.cs" />
     <Compile Include="Assets\PelletTrigger.cs" />
     <Compile Include="Assets\PlayerController.cs" />

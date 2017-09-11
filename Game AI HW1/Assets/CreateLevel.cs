@@ -14,9 +14,18 @@ public class CreateLevel : MonoBehaviour {
     public Transform wall;
     public Transform pellet;
     public Transform floor;
+    public Transform globals;
+    public Transform red_ghost;
+    public Transform yellow_ghost;
+    public Transform blue_ghost;
+    public Transform purple_ghost;
 
 	// Use this for initialization
 	void Start () {
+
+        //Instantiate globals at runtime.
+        Instantiate(globals);
+        globals.GetComponent<Globals>().resetScore();
 
         //Set screen resolution.
         Screen.SetResolution(1920,1080, false);
@@ -77,6 +86,22 @@ public class CreateLevel : MonoBehaviour {
                 {
                     Instantiate(floor, new Vector3((x * 0.3f), (y * -0.3f), 0), Quaternion.identity);
                     Instantiate(player, new Vector3((x * 0.3f), (y * -0.3f), 0), Quaternion.identity);
+                }
+                else if (jagged[x + 14][y + 16] == 82)
+                {
+                    Instantiate(red_ghost, new Vector3((x * 0.3f), (y * -0.3f), 0), Quaternion.identity);
+                }
+                else if (jagged[x + 14][y + 16] == 77)
+                {
+                    Instantiate(purple_ghost, new Vector3((x * 0.3f), (y * -0.3f), 0), Quaternion.identity);
+                }
+                else if (jagged[x + 14][y + 16] == 89)
+                {
+                    Instantiate(yellow_ghost, new Vector3((x * 0.3f), (y * -0.3f), 0), Quaternion.identity);
+                }
+                else if (jagged[x + 14][y + 16] == 66)
+                {
+                    Instantiate(blue_ghost, new Vector3((x * 0.3f), (y * -0.3f), 0), Quaternion.identity);
                 }
                 else
                 {

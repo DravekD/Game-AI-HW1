@@ -5,18 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class Globals : MonoBehaviour {
 
-    private int score;
-    private int lives;
+    private int score = 0;
+    private int high_score;
 
     void Start()
     {
         score = 0;
-        lives = 3;
+    }
+
+    public void setHighScore(int x)
+    {
+        high_score = x;
     }
 
     public void restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void resetScore()
+    {
+        score = 0;
     }
 
     public int getScore()
@@ -27,15 +36,5 @@ public class Globals : MonoBehaviour {
     public void addScore()
     {
         score += 1;
-    }
-
-    public int getLives()
-    {
-        return lives;
-    }
-
-    void Update()
-    {
-        score = score;
     }
 }
